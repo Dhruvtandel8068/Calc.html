@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      justify-items: center;
+      /* display: flex; */
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .column {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 30%;
+    }
+
+    .column h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .add-card {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .add-card:hover {
+      background-color: #0056b3;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      background: #f9f9f9;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Kanban Board</h1>
+  <div class="container">
+    <div class="column" id="todo">
+      <h2>To Do</h2>
+      <div class="button-container">
+        <button class="add-card" onclick="addCard('todo')">+ Add Card</button>
+      </div>
+      <div id="todo-cards"></div>
+    </div>
+    <div class="column" id="inProgress">
+      <h2>In Progress</h2>
+      <div class="button-container">
+        <button class="add-card" onclick="addCard('inProgress')">+ Add Card</button>
+      </div>
+      <div id="inProgress-cards"></div>
+    </div>
+    <div class="column" id="done">
+      <h2>Done</h2>
+      <div class="button-container">
+        <button class="add-card" onclick="addCard('done')">+ Add Card</button>
+      </div>
+      <div id="done-cards"></div>
+    </div>
+  </div>
+
+  <script>
+    function addCard(columnId) {
+      const cardText = prompt('Enter card text:');
+      if (cardText) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.textContent = cardText;
+        document.getElementById(`${columnId}-cards`).appendChild(card);
+      }
+    }
+  </script>
+</body>
+</html>
